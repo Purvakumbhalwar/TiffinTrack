@@ -7,17 +7,29 @@ const toggleNav = () => {
 };
 mobileNav.addEventListener("click", () => toggleNav());
 
-document.querySelector('form').addEventListener('submit', function(event) {
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var contact = document.getElementById('contact').value;
-    var message = document.getElementById('message').value;
+<form name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+    <!-- form fields -->
+</form>
 
-    if (!name || !email || !contact || !message) {
-        alert('Please fill out all fields.');
-        event.preventDefault();
-    }
-});
+<div id="thank-you-message" style="display:none;">Thank you for your message!</div>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString(),
+    })
+    .then(() => {
+        form.style.display = "none";
+        document.getElementById('thank-you-message').style.display = "block";
+    })
+    .catch(error => alert(error));
+}
+</script>
+
 
 // scripts.js
 
