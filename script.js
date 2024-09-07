@@ -13,7 +13,7 @@ mobileNav.addEventListener("click", () => toggleNav());
 
 <div id="thank-you-message" style="display:none;">Thank you for your message!</div>
 
-<script>
+
 function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -28,10 +28,10 @@ function handleSubmit(event) {
     })
     .catch(error => alert(error));
 }
-</script>
 
 
-// scripts.js
+
+
 
 // Select the Gujarat Cuisine card by its ID
 const gujaratCuisineCard = document.getElementById('cuisine');
